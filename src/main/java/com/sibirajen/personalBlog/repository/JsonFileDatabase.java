@@ -25,7 +25,7 @@ public class JsonFileDatabase {
         objectMapper.writeValue(filePath.toFile(), bean);
     }
 
-    public <T> List<T> read(Class<T> clazz) throws IOException {
+    public <T> List<T> readAll(Class<T> clazz) throws IOException {
         try (Stream<Path> paths = Files.list(DATABASE_PATH)) {
             return paths
                     .filter( path -> path.toString().endsWith(".json"))
