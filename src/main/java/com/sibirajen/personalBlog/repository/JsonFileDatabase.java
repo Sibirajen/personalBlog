@@ -19,8 +19,8 @@ public class JsonFileDatabase {
         this.DATABASE_PATH = Path.of("src/main/java/com/sibirajen/personalBlog/data", path);
     }
 
-    public <T> void write(T bean, String id) throws IOException {
-        Path filePath = DATABASE_PATH.resolve( "article_" + id + ".json");
+    public <T> void write(String id, T bean) throws IOException {
+        Path filePath = DATABASE_PATH.resolve( id + ".json");
         Files.createDirectories(DATABASE_PATH);
         objectMapper.writeValue(filePath.toFile(), bean);
     }
