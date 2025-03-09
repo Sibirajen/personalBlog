@@ -39,4 +39,12 @@ public class JsonFileDatabase {
                     .collect(Collectors.toList());
         }
     }
+
+    public <T> T read(String id, Class<T> clazz) throws IOException {
+        Path filePath = DATABASE_PATH.resolve(id + ".json");
+        if(!Files.exists(filePath)){
+            throw new RuntimeException("File doesn't exists");
+        }
+        return objectMapper.readValue(filePath.toFile(), clazz);
+    }
 }
