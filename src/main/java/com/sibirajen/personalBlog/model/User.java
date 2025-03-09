@@ -1,15 +1,25 @@
 package com.sibirajen.personalBlog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.sibirajen.personalBlog.util.ShortIdGen;
+import lombok.*;
+
+import java.util.List;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class User {
+    private String id;
     private String name;
     private String password;
+    private List<String> articles;
+
+    @Builder
+    public User(String name, String password, List<String> articles) {
+        this.id = ShortIdGen.getID();
+        this.name = name;
+        this.password = password;
+        this.articles = articles;
+    }
 }
