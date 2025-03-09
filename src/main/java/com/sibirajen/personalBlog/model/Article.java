@@ -1,15 +1,14 @@
 package com.sibirajen.personalBlog.model;
 
 import com.sibirajen.personalBlog.util.ShortIdGen;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Article {
     private String id;
     private String title;
@@ -17,6 +16,7 @@ public class Article {
     private LocalDate createDate;
     private LocalDate updateDate;
 
+    @Builder
     public Article(String title, String content, LocalDate createDate, LocalDate updateDate) {
         this.id = ShortIdGen.getID();
         this.title = title;
