@@ -3,23 +3,19 @@ package com.sibirajen.personalBlog.model;
 import com.sibirajen.personalBlog.util.ShortIdGen;
 import lombok.*;
 
-import java.util.List;
-
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 public class User {
-    private String id;
-    private String name;
+    private String userId;
+    private String userName;
     private String password;
-    private List<String> articles;
 
     @Builder
-    public User(String name, String password, List<String> articles) {
-        this.id = ShortIdGen.getID();
-        this.name = name;
+    public User(String userName, String password) {
+        this.userId = ShortIdGen.getID();
+        this.userName = userName;
         this.password = password;
-        this.articles = articles;
     }
 }
