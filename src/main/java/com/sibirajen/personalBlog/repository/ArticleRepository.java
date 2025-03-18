@@ -1,5 +1,6 @@
 package com.sibirajen.personalBlog.repository;
 
+import com.sibirajen.personalBlog.model.Article;
 import com.sibirajen.personalBlog.util.GenerateFileID;
 import com.sibirajen.personalBlog.util.enums.Type;
 import org.springframework.stereotype.Repository;
@@ -8,11 +9,11 @@ import java.nio.file.Path;
 
 @Repository
 public class ArticleRepository {
-    private final JsonFileDatabase database;
+    private final JsonFileDatabase<Article> database;
     private static final Path articlePath = Path.of("/articles");
 
     public ArticleRepository() {
-        this.database = new JsonFileDatabase(articlePath.toString());
+        this.database = new JsonFileDatabase<>(articlePath.toString());
     }
 
     public static String getFileId(String id){
