@@ -19,13 +19,13 @@ public class JsonFileDatabase {
         this.DATABASE_PATH = Path.of("src/main/java/com/sibirajen/personalBlog/data", path);
     }
 
-    public <T> void write(String id, T bean) throws IOException {
+    public <T> void writeFile(String id, T bean) throws IOException {
         Path filePath = DATABASE_PATH.resolve( id + ".json");
         Files.createDirectories(DATABASE_PATH);
         objectMapper.writeValue(filePath.toFile(), bean);
     }
 
-    public <T> List<T> readAll(Class<T> clazz) throws IOException {
+    public <T> List<T> readAllFiles(Class<T> clazz) throws IOException {
         try (Stream<Path> paths = Files.list(DATABASE_PATH)) {
             return paths
                     .filter( path -> path.toString().endsWith(".json"))
@@ -40,7 +40,7 @@ public class JsonFileDatabase {
         }
     }
 
-    public <T> T read(String id, Class<T> clazz) throws IOException {
+    public <T> T readFile(String id, Class<T> clazz) throws IOException {
         Path filePath = DATABASE_PATH.resolve(id + ".json");
         if(!Files.exists(filePath)){
             throw new RuntimeException("File doesn't exists");
