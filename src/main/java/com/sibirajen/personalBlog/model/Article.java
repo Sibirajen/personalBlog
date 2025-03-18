@@ -10,18 +10,20 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class Article {
-    private String id;
+    private String articleId;
+    private String authorName;
+    private String authorId;
     private String title;
     private String content;
     private LocalDate createDate;
-    private LocalDate updateDate;
 
     @Builder
-    public Article(String title, String content, LocalDate createDate, LocalDate updateDate) {
-        this.id = ShortIdGen.getID();
+    public Article(String authorName, String authorId, String title, String content, LocalDate createDate) {
+        this.articleId = ShortIdGen.getID();
+        this.authorName = authorName;
+        this.authorId = authorId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
-        this.updateDate = updateDate;
     }
 }
