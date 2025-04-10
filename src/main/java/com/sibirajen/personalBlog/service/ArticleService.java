@@ -16,11 +16,11 @@ public class ArticleService {
         this.repo = repo;
     }
 
-    public Article getArticle(String id){
-        return repo.getArticleById(id);
+    public Article getArticle(Long id){
+        return repo.findById(id).orElse(new Article());
     }
 
     public List<Article> getAllArticles() {
-        return repo.getArticles();
+        return repo.findAll();
     }
 }
