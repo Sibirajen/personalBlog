@@ -19,7 +19,7 @@ public class ArticleController {
     }
 
     @GetMapping("/article/{id}")
-    public String getArticle(@PathVariable String id, Model model){
+    public String getArticle(@PathVariable Long id, Model model){
         Article article = service.getArticle(id);
         model.addAttribute("article", article);
 

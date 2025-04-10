@@ -26,7 +26,5 @@ public class HomeController {
 
         model.addAttribute("articles", articles);
         return "home";
-
-//        Entertainment
     }
 }
