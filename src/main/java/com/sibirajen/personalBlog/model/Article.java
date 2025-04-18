@@ -35,12 +35,11 @@ public class Article {
     @Column(name = "CREATE_DATE" ,updatable = false)
     private LocalDate createDate;
 
-    public Article(String authorName, User author, String title, String content, LocalDate createDate) {
+    public Article(String authorName, User author, String title, String content) {
         this.authorName = authorName;
         this.author = author;
         this.title = title;
         this.content = content;
-        this.createDate = createDate;
     }
 
     @PrePersist
