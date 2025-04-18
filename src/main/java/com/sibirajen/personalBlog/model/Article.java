@@ -1,6 +1,7 @@
 package com.sibirajen.personalBlog.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -14,14 +15,15 @@ import java.time.LocalDate;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ARTICLE_ID")
+    @Column(name = "ID")
     private Long articleId;
 
     @Column(name = "AUTHOR_NAME")
     private String authorName;
 
-    @Column(name = "AUTHOR_ID")
-    private String authorId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "ID")
+    private User author;
 
     @Column(name = "TITLE")
     private String title;
@@ -29,14 +31,16 @@ public class Article {
     @Column(name = "CONTENT" ,columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "CREATE_DATE" ,updatable = false, nullable = false)
+    @NotNull
+    @Column(name = "CREATE_DATE" ,updatable = false)
     private LocalDate createDate;
 
-    public Article(String authorName, String authorId, String title, String content) {
+    public Article(String authorName, User author, String title, String content, LocalDate createDate) {
         this.authorName = authorName;
-        this.authorId = authorId;
+        this.author = author;
         this.title = title;
         this.content = content;
+        this.createDate = createDate;
     }
 
     @PrePersist
