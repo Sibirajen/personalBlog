@@ -23,4 +23,8 @@ public class ArticleService {
     public List<Article> getAllArticles() {
         return repo.findAll();
     }
+
+    public Article saveArticle(Article article){
+        return repo.save(article);
+    }
 }
