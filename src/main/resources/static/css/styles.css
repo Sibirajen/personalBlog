@@ -83,3 +83,47 @@ footer {
 .article-content p {
     font-size: 1.5rem;
 }
+
+.cred-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(229, 194, 77);
+}
+
+.cred{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button, input{
+    width: 350px;
+    height: 40px;
+    padding: 3px;
+    font-size: 1.1rem;
+    border: 1px solid #131640;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.cred * {
+    margin: 10px 0;
+}
+
+button{
+    color: white;
+    background-color: #131640;
+}
+
+button:hover{
+    background-color: #131640d9;
+    cursor: pointer;
+}
+
+.cred p{
+    text-align: center;
+}
