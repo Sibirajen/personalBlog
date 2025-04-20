@@ -24,7 +24,7 @@ public class ArticleService {
         return repo.findAll();
     }
 
-    public Article saveArticle(Article article){
-        return repo.save(article);
+    public void saveArticle(Article article){
+        repo.save(article);
     }
 }
