@@ -1,8 +1,10 @@
 package com.sibirajen.personalBlog.controller;
 
+import com.sibirajen.personalBlog.model.LoginRequest;
 import com.sibirajen.personalBlog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -30,15 +32,15 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String getLogin(){
+    public String getLogin(Model model){
+        model.addAttribute("loginRequest", new LoginRequest());
         return "login";
     }
 
     @PostMapping("/login")
-    public Object postLogin(@RequestParam(name = "email") String emailId,
-                            @RequestParam(name = "password") String password){
-        System.out.println(emailId + " " + password);
-        if(service.isLoginOk(emailId, password)){
+    public Object postLogin(@ModelAttribute("loginRequest") LoginRequest login){
+        System.out.println(login.getEmail() + " " + login.getPassword());
+        if(service.isLoginOk(login.getEmail(), login.getPassword())){
             return "redirect:/home";
         }
 
