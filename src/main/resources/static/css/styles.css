@@ -124,6 +124,10 @@ button:hover{
     cursor: pointer;
 }
 
-.cred p{
+.link{
     text-align: center;
+}
+
+.error{
+    color: red;
 }
