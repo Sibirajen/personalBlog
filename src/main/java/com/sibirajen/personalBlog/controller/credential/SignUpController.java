@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 public class SignUpController {
-    private LoginService service;
+    private final LoginService service;
 
     @Autowired
     public SignUpController(LoginService service) {
