@@ -7,6 +7,7 @@
 
 h1{
     font-size: 2em;
+    margin-left: 5px;
 }
 
 nav{
@@ -54,6 +55,8 @@ footer {
     display: flex;
     gap: 10px;
     align-items: center;
+    align-items: first baseline;
+    justify-content: space-between;
 }
 
 .content  a{
@@ -130,4 +133,15 @@ button:hover{
 
 .error{
     color: red;
+}
+
+.nav-container .login > a{
+    text-decoration: none;
+    color: white;
+    padding: 7px;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    border: 1px solid black;
+    background-color: black;
+    border-radius: 7px;
 }
