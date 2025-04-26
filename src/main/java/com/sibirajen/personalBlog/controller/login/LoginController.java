@@ -1,4 +1,4 @@
-package com.sibirajen.personalBlog.controller.credential;
+package com.sibirajen.personalBlog.controller.login;
 
 import com.sibirajen.personalBlog.model.LoginRequest;
 import com.sibirajen.personalBlog.service.LoginService;
