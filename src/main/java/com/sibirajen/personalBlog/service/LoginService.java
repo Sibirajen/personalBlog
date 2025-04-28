@@ -18,22 +18,20 @@ public class LoginService {
     }
 
     public boolean saveUser(String userName, String emailId, String password) {
-        if(repo.existsByEmailId(emailId)){
+        String normalizedEmailId = emailId.toLowerCase();
+        if(repo.existsByEmailId(normalizedEmailId)){
             return false;
         }
 
-        User user = new User(userName, Hash.generate(password), emailId);
+        User user = new User(userName, Hash.generate(password), normalizedEmailId);
 //        System.out.println(user.getName() + " " + user.getEmailId() + " " + user.getPassword());
         repo.save(user);
         return true;
     }
 
     public boolean validateCred(String emailId, String password) {
-        Optional<User> user = repo.findByEmailId(emailId);
+        String normalizedEmailId = emailId.toLowerCase();
+        Optional<User> user = repo.findByEmailId(normalizedEmailId);
         return user.isPresent() && Hash.compare(password, user.get().getPassword());
-    }
-
-    public boolean findAccount(String emailId) {
-        return false;
     }
 }
