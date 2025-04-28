@@ -30,7 +30,7 @@ public class LoginController {
                             Model model){
         session.setAttribute("email", login.getEmail());
 
-        if(service.isLoginOk(login.getEmail(), login.getPassword())){
+        if(service.validateCred(login.getEmail(), login.getPassword())){
             return "redirect:/home";
         }
 

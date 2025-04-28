@@ -17,16 +17,23 @@ public class LoginService {
         this.repo = repo;
     }
 
-    public void saveUser(String userName, String emailId, String password) {
-        if(!repo.existsByEmailId(emailId)){
-            User user = new User(userName, Hash.generate(password), emailId);
-            System.out.println(user.getName() + " " + user.getEmailId() + " " + user.getPassword());
-            repo.save(user);
+    public boolean saveUser(String userName, String emailId, String password) {
+        if(repo.existsByEmailId(emailId)){
+            return false;
         }
+
+        User user = new User(userName, Hash.generate(password), emailId);
+//        System.out.println(user.getName() + " " + user.getEmailId() + " " + user.getPassword());
+        repo.save(user);
+        return true;
     }
 
-    public boolean isLoginOk(String emailId, String password) {
+    public boolean validateCred(String emailId, String password) {
         Optional<User> user = repo.findByEmailId(emailId);
         return user.isPresent() && Hash.compare(password, user.get().getPassword());
+    }
+
+    public boolean findAccount(String emailId) {
+        return false;
     }
 }
