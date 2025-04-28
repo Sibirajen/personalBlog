@@ -17,8 +17,11 @@
                 <div>
                     <h1>Mindscape</h1>
                 </div>
-                <div class="login">
-                    <a href="login.html" th:href="@{/login}">Log in</a>
+                <div th:if="${!logged}" class="login">
+                    <a th:href="@{/login}">Log in</a>
+                </div>
+                <div th:if="${logged}" class="login">
+                    <a th:href="@{/logout}">Log out</a>
                 </div>
             </nav>
         </header>

@@ -23,11 +23,11 @@ public class HomeController {
     @GetMapping(path = "/home")
     public String getHome(Model model, HttpSession session){
         List<Article> articles = service.getAllArticles();
-        model.addAttribute("articles", articles);
+        boolean isLoggedIn = session.getAttribute("email") != null;
 
-        if(session.getAttribute("email") != null){
-            return "home-logged";
-        }
+        model.addAttribute("articles", articles);
+        model.addAttribute("logged", isLoggedIn);
+
         return "home";
     }
 }
