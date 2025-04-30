@@ -2,6 +2,7 @@ package com.sibirajen.personalBlog.controller;
 
 import com.sibirajen.personalBlog.model.Article;
 import com.sibirajen.personalBlog.service.ArticleService;
+import com.sibirajen.personalBlog.util.SessionValidator;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class HomeController {
     @GetMapping(path = "/home")
     public String getHome(Model model, HttpSession session){
         List<Article> articles = service.getAllArticles();
-        boolean isLoggedIn = session.getAttribute("email") != null;
+        boolean isLoggedIn = SessionValidator.isSessionValid(session);
 
         model.addAttribute("articles", articles);
         model.addAttribute("logged", isLoggedIn);
