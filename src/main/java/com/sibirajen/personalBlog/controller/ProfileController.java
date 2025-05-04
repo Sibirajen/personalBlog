@@ -25,7 +25,7 @@ public class ProfileController {
             return "redirect:/login";
 
         String email = (String) session.getAttribute("email");
-        service.postArticle(articleRequest, email);
-        return "error";
+        long id = service.postArticle(articleRequest, email);
+        return "redirect:/article/" + id;
     }
 }
