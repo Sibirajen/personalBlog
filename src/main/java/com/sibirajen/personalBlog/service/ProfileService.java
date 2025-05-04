@@ -22,13 +22,13 @@ public class ProfileService {
         this.articleRepo = articleRepo;
     }
 
-    public void postArticle(ArticleRequest articleRequest, String emailId) {
+    public long postArticle(ArticleRequest articleRequest, String emailId) {
         String normalizedEmail = emailId.toLowerCase();
 
         Optional<User> user = userRepo.findByEmailId(normalizedEmail);
 
         if(user.isEmpty()){
-            return;
+            return -1;
         }
 
         Article article = ArticleBuilder.builder()
@@ -39,5 +39,7 @@ public class ProfileService {
                 .build();
 
         articleRepo.save(article);
+
+        return article.getArticleId();
     }
 }
