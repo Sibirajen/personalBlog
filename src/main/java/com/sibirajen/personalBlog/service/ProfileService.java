@@ -25,7 +25,7 @@ public class ProfileService {
     public void postArticle(ArticleRequest articleRequest, String emailId) {
         String normalizedEmail = emailId.toLowerCase();
 
-        Optional<User> user = userRepo.findByEmailId(emailId);
+        Optional<User> user = userRepo.findByEmailId(normalizedEmail);
 
         if(user.isEmpty()){
             return;
