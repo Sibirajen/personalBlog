@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ProfileService {
+public class PublishService {
     private final UserRepository userRepo;
     private final ArticleRepository articleRepo;
 
     @Autowired
-    public ProfileService(UserRepository userRepo, ArticleRepository articleRepo) {
+    public PublishService(UserRepository userRepo, ArticleRepository articleRepo) {
         this.userRepo = userRepo;
         this.articleRepo = articleRepo;
     }
@@ -33,7 +33,7 @@ public class ProfileService {
 
         Article article = ArticleBuilder.builder()
                 .title(articleRequest.getTitle())
-                .authorName(articleRequest.getAuthorName())
+                .authorName(user.get().getName())
                 .author(user.get())
                 .content(articleRequest.getContent())
                 .build();
