@@ -9,5 +9,4 @@ import lombok.*;
 public class ArticleRequest {
     private String title;
     private String content;
-    private String authorName;
 }
