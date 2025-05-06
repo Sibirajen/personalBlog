@@ -17,11 +17,16 @@
                 <div>
                     <h1>Mindscape</h1>
                 </div>
-                <div th:if="${!logged}" class="login">
-                    <a th:href="@{/login}">Log in</a>
-                </div>
-                <div th:if="${logged}" class="login">
-                    <a th:href="@{/logout}">Log out</a>
+                <div class="nav-wrap">
+                    <div th:if="${!logged}" class="login">
+                        <a th:href="@{/login}">Log in</a>
+                    </div>
+                    <div th:if="${logged}" class="publish-button">
+                        <a th:href="@{/publish}">Publish</a>
+                    </div>
+                    <div th:if="${logged}" class="login">
+                        <a th:href="@{/logout}">Log out</a>
+                    </div>
                 </div>
             </nav>
         </header>
