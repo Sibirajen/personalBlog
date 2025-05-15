@@ -22,14 +22,12 @@ public class PublishService {
         this.articleRepo = articleRepo;
     }
 
-    public long postArticle(ArticleRequest articleRequest, String emailId) {
+    public void postArticle(ArticleRequest articleRequest, String emailId) {
         String normalizedEmail = emailId.toLowerCase();
 
         Optional<User> user = userRepo.findByEmailId(normalizedEmail);
 
-        if(user.isEmpty()){
-            return -1;
-        }
+        if(user.isEmpty()) return;
 
         Article article = ArticleBuilder.builder()
                 .title(articleRequest.getTitle())
@@ -39,7 +37,5 @@ public class PublishService {
                 .build();
 
         articleRepo.save(article);
-
-        return article.getArticleId();
     }
 }
