@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class PublishController {
@@ -37,7 +36,7 @@ public class PublishController {
             return "redirect:/login";
 
         String email = (String) session.getAttribute("email");
-        long id = service.postArticle(articleRequest, email);
-        return "redirect:/article/" + id;
+        service.postArticle(articleRequest, email);
+        return "redirect:/profile";
     }
 }

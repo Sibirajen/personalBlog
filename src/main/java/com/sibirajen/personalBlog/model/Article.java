@@ -20,7 +20,7 @@ public class Article {
 
     @Column(name = "AUTHOR_NAME")
     private String authorName;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "ID")
     private User author;
