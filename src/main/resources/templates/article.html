@@ -20,7 +20,16 @@
 
         <div th:object="${article}" class="content">
             <div style="padding: 20px;" >
-                <h2 th:text="*{title}" style="font-size: xx-large; padding-bottom: 5px; padding-left: 0;" >Title</h2>
+                <h2 th:text="*{title}" style="font-size: xx-large;font-weight: 400; padding-bottom: 5px; padding-left: 0;" >Title</h2>
+                <div th:if="${isProfile}" class="article-actions">
+                    <form th:action="@{/profile/edit/{id}(id=*{articleId})}" method="get" class="edit-form">
+                        <button type="submit" class="action-button edit-button">Edit</button>
+                    </form>
+                    <form th:action="@{/profile/delete/{id}(id=*{articleId})}" method="post" class="delete-form">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="action-button delete-button">Delete</button>
+                    </form>
+                </div>
                 <p style="color: gray; font-size: 0.9rem; padding-bottom: 10px;">
                     <span th:text="*{#temporals.format(createDate, 'dd MMM yyyy')}">10 Mar</span>
                     <span th:text="' by ' + *{authorName}" style="font-style: italic">By Sibi</span>

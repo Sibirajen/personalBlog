@@ -38,7 +38,7 @@
             <div th:each="article : ${articles}" >
                 <a th:href="@{/article/{id}(id=${article.articleId})}" href="" target="_self" class="article">
                     <div class="article-content">
-                        <p th:text="${article.title}" style="font-weight: bold; flex: 2;">Title</p>
+                        <p th:text="${article.title}" style="font-weight: 400; flex: 2;">Title</p>
                         <p th:text="${article.authorName}" style="font-style: italic;color: gray; font-size: 1.1rem;">Authur</p>
                         <p th:text="${#temporals.format(article.createDate, 'dd MMM yyyy')}" style=" color: gray; font-size: 1.1rem;">Date</p>
                     </div>

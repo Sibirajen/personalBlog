@@ -17,9 +17,9 @@
                 <div>
                     <h1><a th:href="@{/home}" href="./home.html">Mindscape</a></h1>
                 </div>
-                <div th:if="${!logged}" class="login">
+                <!-- <div th:if="${!logged}" class="login">
                     <a th:href="@{/login}">Log in</a>
-                </div>
+                </div> -->
                 <div th:if="${logged}" class="login">
                     <a th:href="@{/logout}">Log out</a>
                 </div>
