@@ -23,7 +23,7 @@ public class ProfileController {
     }
 
     @GetMapping
-    public String getArticle(Model model, HttpSession session){
+    public String getArticlesByProfile(Model model, HttpSession session){
         if(!SessionValidator.isSessionValid(session)){
             return "redirect:/login";
         }
