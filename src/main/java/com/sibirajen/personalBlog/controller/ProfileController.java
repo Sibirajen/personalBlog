@@ -27,7 +27,10 @@ public class ProfileController {
         if(!SessionValidator.isSessionValid(session)){
             return "redirect:/login";
         }
-        List<Article> articles = service.getArticleByAuthor((String) session.getAttribute("email"));
+        String email = (String) session.getAttribute("email");
+        List<Article> articles = service.getArticleByAuthor(email);
+        String authorName = service.getAuthorName(email);
+        model.addAttribute("authorName", authorName);
         model.addAttribute("articles", articles);
         return "profile";
     }
