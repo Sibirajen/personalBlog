@@ -1,6 +1,7 @@
 package com.sibirajen.personalBlog.service;
 
 import com.sibirajen.personalBlog.model.Article;
+import com.sibirajen.personalBlog.model.ArticleRequest;
 import com.sibirajen.personalBlog.model.User;
 import com.sibirajen.personalBlog.repository.ArticleRepository;
 import com.sibirajen.personalBlog.repository.UserRepository;
@@ -28,5 +29,25 @@ public class ProfileService {
             return articleRepo.findByAuthorId(user.get().getId());
         }
         return new ArrayList<>();
+    }
+
+    public Article getArticle(Long id){
+        return articleRepo.findById(id).orElse(new Article());
+    }
+
+    public String getAuthorName(String email){
+        Optional<User> user = userRepo.findByEmailId(email);
+        return user.map(User::getName).orElse(null);
+    }
+
+    public void deleteArticle(long id) {
+        articleRepo.deleteById(id);
+    }
+
+    public void update(long id, ArticleRequest articleRequest) {
+        Article article = getArticle(id);
+        article.setTitle(articleRequest.getTitle());
+        article.setContent(articleRequest.getContent());
+        articleRepo.save(article);
     }
 }
