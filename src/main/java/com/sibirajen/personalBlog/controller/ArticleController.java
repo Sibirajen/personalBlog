@@ -22,7 +22,7 @@ public class ArticleController {
     public String getArticle(@PathVariable Long id, Model model){
         Article article = service.getArticle(id);
         model.addAttribute("article", article);
-
+        model.addAttribute("isProfile", false);
         return "article";
     }
 }
